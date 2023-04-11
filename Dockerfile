@@ -25,7 +25,8 @@ RUN git clone https://github.com/jonp92/Milliner.git && \
     python3 -m venv /home/anvil/.anvil_app && \
     /home/anvil/.anvil_app/bin/pip install -U pip && \
     /home/anvil/.anvil_app/bin/pip install anvil-app-server python-dateutil bcrypt && \
-    rm -rf /home/anvil/.cache/pip
+    rm -rf /home/anvil/.cache/pip && \
+    /home/anvil/.anvil_app/bin/anvil-app-server || true
 
 VOLUME ["/home/anvil/anvil_data"]
 
