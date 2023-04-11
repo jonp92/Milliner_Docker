@@ -15,20 +15,17 @@ RUN apt-get update && \
 
 RUN wget https://corretto.aws/downloads/latest/amazon-corretto-11-x64-linux-jdk.deb && \
     dpkg -i amazon-corretto-11-x64-linux-jdk.deb && \
-    rm amazon-corretto-11-x64-linux-jdk.deb && \
-    python3 -m venv /opt/venv && \
-    /opt/venv/bin/pip install -U pip && \
-    /opt/venv/bin/pip install anvil-app-server python-dateutil bcrypt && \
-    rm -rf /root/.cache/pip
-
+    rm amazon-corretto-11-x64-linux-jdk.deb
 
 USER anvil:anvil
 
 WORKDIR /home/anvil
 
-COPY anvil-app-server.20230216-131528.jar /home/anvil/.anvil/anvil-app-server.20230216-131528.jar
-
-RUN git clone https://github.com/jonp92/Milliner.git
+RUN git clone https://github.com/jonp92/Milliner.git && \
+    python3 -m venv /home/anvil/.anvil_app && \
+    /home/anvil/.anvil_app/bin/pip install -U pip && \
+    /home/anvil/.anvil_app/bin/pip install anvil-app-server python-dateutil bcrypt && \
+    rm -rf /home/anvil/.cache/pip
 
 VOLUME ["/home/anvil/anvil_data"]
 
@@ -36,4 +33,4 @@ EXPOSE 3030
 
 CMD ["--port", "3030"]
 
-ENTRYPOINT ["/opt/venv/bin/anvil-app-server", "--app", "/home/anvil/Milliner", "--auto-migrate", "--data-dir=/home/anvil/anvil_data"]
+ENTRYPOINT ["/home/anvil/.anvil_app/bin/anvil-app-server", "--app", "/home/anvil/Milliner", "--auto-migrate", "--data-dir=/home/anvil/anvil_data"]
