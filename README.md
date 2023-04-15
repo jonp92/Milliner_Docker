@@ -2,7 +2,7 @@
 
 ![Milliner Logo-2](https://user-images.githubusercontent.com/35941065/232253180-2f91a0bd-a232-4f1d-b87b-f4d44163c365.png)
 
-Dockerized version of Milliner, a lightweight Headscale management web-UI.
+a Dockerized version of Milliner, which itself a lightweight Headscale management web-UI.
 Milliner is developed using the https://anvil.works/ platform and runs on their open-source Anvil App Server. Using Docker to run Milliner as an image is by far the easiest way to get started, as running the App Server standalone requires more time and configuration to deploy. 
 
 To deploy with basic settings, on the default port, without HTTPS or bindings for the data directory, and no you can run a one liner like this.
