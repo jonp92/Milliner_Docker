@@ -7,12 +7,17 @@ Milliner is developed using the https://anvil.works/ platform and runs on their 
 
 To deploy with basic settings, on the default port, without HTTPS or bindings for the data directory, and no you can run a one liner like this.
 
+```shell
 docker run -d -p 3030:3030 --name Milliner jpressler/milliner:latest
+```
 
 In order to keep your database between updates, it is best to specify a Bind or Volume for you data directory. Here is an example using a Bind. 
 NOTE it is extremely important if using a Bind to specify the -u parameter with the same user that owns the rights to the files/folders that are bound to Docker. Otherwise the container will fail to start with file permission issues pertaining to PostgresSQL. 
 
+```shell
 docker run -d -p 3030:3030 -v $PWD/milliner_data:/home/anvil/anvil_data -u $USER --name Milliner jpressler/milliner:latest
+```
+
 Any of the Anvil App Server parameters can be specified as commands when running the container. Below are common ones for used for Milliner.
 
 --port - Changes port that webserver will listen on. Make sure to update your -p parameter to point to the updated port.
@@ -25,13 +30,15 @@ Any of the Anvil App Server parameters can be specified as commands when running
 
 Final example to run as a external facing HTTPS website with external Bind for the data directory.
 
+```shell
 docker run -p 443:443 -p 80:80 -v $PWD/milliner_data:/home/anvil/anvil_data -u $USER --name Milliner jpressler/milliner:latest --port 443 \
 --http-redirect-port 80 --origin https://example.com
+```
 
 Caddyfile example for reverse proxy. You can also run Caddy as another Docker container and then use inter-container networking to ensure all access to Milliner is done using the proxy.
 
+```
 https://example.com {
-
     reverse_proxy 127.0.0.1:3030
-    
     }
+```
