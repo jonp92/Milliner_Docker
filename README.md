@@ -31,5 +31,7 @@ docker run -p 443:443 -p 80:80 -v $PWD/milliner_data:/home/anvil/anvil_data -u $
 Caddyfile example for reverse proxy. You can also run Caddy as another Docker container and then use inter-container networking to ensure all access to Milliner is done using the proxy.
 
 https://example.com {
+
     reverse_proxy 127.0.0.1:3030
+    
     }
