@@ -29,9 +29,9 @@ Any of the Anvil App Server parameters can be specified as commands when running
 
 --port - Changes port that webserver will listen on. Make sure to update your -p parameter to point to the updated port.
 
---origin - If specified without the disable-tls flag then Trafek will setup automatically and as long as DNS records are correct a Let's Encrypt certificate will also be generated. Make sure to change the --port to 443 and the -p docker parameter to match, i.e 443:443. If done correctly and your firewall is also open you should be able to point your browser to the origin you specified and access Milliner securely. In order to allow for Let's Encrypt to verify your domain ownership, you also will need to forward port 80 using an additional Docker port parameter.
+--origin - If specified without the disable-tls flag then Traefik will setup automatically and as long as DNS records are correct a Let's Encrypt certificate will also be generated. Make sure to change the --port to 443 and the -p docker parameter to match, i.e 443:443. If done correctly and your firewall is also open you should be able to point your browser to the origin you specified and access Milliner securely. In order to allow for Let's Encrypt to verify your domain ownership, you also will need to forward port 80 using an additional Docker port parameter.
 
---disable-tls - Use the option in combination with --origin if using an external reverse proxy such as NGINX or Caddy. This disables Trafek and causes the server to listen on this domain. Typically in this scenario you will leave the default port of 3030 and point your reverse proxy to that. I recommend Caddy as it's incredibly simple to deploy.
+--disable-tls - Use the option in combination with --origin if using an external reverse proxy such as NGINX or Caddy. This disables Traefik and causes the server to listen on this domain. Typically in this scenario you will leave the default port of 3030 and point your reverse proxy to that. I recommend Caddy as it's incredibly simple to deploy.
 
 --http-redirect-port - Redirect HTTP requests on the specified port to HTTPS. Useful if running without a reverse proxy to automatically redirect any HTTP request to HTTPs.
 
