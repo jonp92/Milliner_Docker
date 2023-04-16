@@ -2,6 +2,9 @@
 
 ![Milliner Logo-2](https://user-images.githubusercontent.com/35941065/232253180-2f91a0bd-a232-4f1d-b87b-f4d44163c365.png)
 
+Source Code:
+https://github.com/jonp92/Milliner
+
 a Dockerized version of Milliner, which itself a lightweight Headscale management web-UI.
 Milliner is developed using the https://anvil.works/ platform and runs on their open-source Anvil App Server. Using Docker to run Milliner as an image is by far the easiest way to get started, as running the App Server standalone requires more time and configuration to deploy. 
 
@@ -10,6 +13,10 @@ To deploy with basic settings, on the default port, without HTTPS or bindings fo
 ```shell
 docker run -d -p 3030:3030 --name Milliner jpressler/milliner:latest
 ```
+
+The default login is admin@milliner.login and password is milliner.
+
+Please add a new user in the Milliner Users section and delete this default user as it is a security risk.
 
 In order to keep your database between updates, it is best to specify a Bind or Volume for you data directory. Here is an example using a Bind. 
 NOTE it is extremely important if using a Bind to specify the -u parameter with the same user that owns the rights to the files/folders that are bound to Docker. Otherwise the container will fail to start with file permission issues pertaining to PostgresSQL. 
