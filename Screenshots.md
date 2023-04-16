@@ -26,7 +26,7 @@ Routes
 
 Settings
 
-<img width="1401" alt="Milliner Settings" src="https://user-images.githubusercontent.com/35941065/232258242-c8d09a7d-a855-46ee-916a-4d791dc531b3.png">
+<img width="1512" alt="Milliner Settings" src="https://user-images.githubusercontent.com/35941065/232326929-a3565b89-5694-48ca-9634-3586c10d341d.png">
 
 Milliner Users
 
